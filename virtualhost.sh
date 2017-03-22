@@ -6,7 +6,8 @@ TEXTDOMAIN=virtualhost
 action=$1
 domain=$2
 rootDir=$3
-owner=$(who am i | awk '{print $1}')
+owner='josep'
+group='www-data'
 email='webmaster@localhost'
 sitesEnable='/etc/apache2/sites-enabled/'
 sitesAvailable='/etc/apache2/sites-available/'
@@ -105,7 +106,7 @@ if [ "$action" == 'create' ]
 		if [ "$owner" == "" ]; then
 			chown -R $(whoami):$(whoami) $rootDir
 		else
-			chown -R $owner:$owner $rootDir
+			chown -R $owner:$group $rootDir
 		fi
 
 		### enable website
